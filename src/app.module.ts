@@ -7,7 +7,7 @@ import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './module/database.module';
 
 @Module({
-  imports: [CatsModule, DatabaseModule, ConfigModule.forRoot({ 
+  imports: [CatsModule, ConfigModule.forRoot({ 
     validationSchema: Joi.object({
       POSTGRES_HOST: Joi.string().required(),
       POSTGRES_PORT: Joi.number().required(),
@@ -16,7 +16,8 @@ import { DatabaseModule } from './module/database.module';
       POSTGRES_DB: Joi.string().required(),
       PORT: Joi.number()
     })
-  })],
+  }),
+  DatabaseModule ],
   controllers: [AppController],
   providers: [AppService],
 })
