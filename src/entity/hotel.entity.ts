@@ -7,4 +7,10 @@ class Hotel{
 
     @Column()
     private name: string;
+
+    @Column()
+    private location: string;
+
+    @Column()
+    private average: string;
 }
