@@ -22,3 +22,5 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 })
 
 export class DatabaseModule {}
+
+//TODO: review the data architecture, normalize the data architecture
