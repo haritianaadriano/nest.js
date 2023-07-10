@@ -9,8 +9,8 @@ class Hotel{
     private name: string;
 
     @Column()
-    private location: string;
+    private average: string;
 
     @Column()
-    private average: string;
+    private comments: string;
 }
