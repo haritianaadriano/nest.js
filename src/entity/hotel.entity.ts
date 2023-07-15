@@ -13,4 +13,7 @@ class Hotel{
 
     @Column()
     private comments: string;
+
+    @Column()
+    private profile: Uint8Array;
 }
