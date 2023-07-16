@@ -1,0 +1,13 @@
+import { IsNotEmpty, IsString } from "class-validator";
+
+export class CreateCustomerDto {
+    @IsString()
+    @IsNotEmpty()
+    firstname: string;
+
+    @IsString()
+    @IsNotEmpty()
+    lastname: string;
+
+    adult: boolean;
+}
