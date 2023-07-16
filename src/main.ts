@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configSerivce = app.get(ConfigService);
-  await app.listen(configSerivce.get('PORT') || 3000);
+  await app.listen(3000);
 }
 dotenv.config();
 bootstrap();

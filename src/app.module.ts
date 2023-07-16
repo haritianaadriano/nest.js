@@ -5,6 +5,7 @@ import { CatsModule } from './module/cats.module';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './module/database.module';
+import { CustomerModule } from './module/customer.module';
 
 @Module({
   imports: [CatsModule, ConfigModule.forRoot({ 
@@ -15,8 +16,9 @@ import { DatabaseModule } from './module/database.module';
       POSTGRES_PASSWORD: Joi.string().required(),
       POSTGRES_DB: Joi.string().required(),
       PORT: Joi.number()
-    })
+    }),
   }),
+  CustomerModule,
   DatabaseModule ],
   controllers: [AppController],
   providers: [AppService],
