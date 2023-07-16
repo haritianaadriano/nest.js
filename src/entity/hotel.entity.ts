@@ -1,7 +1,7 @@
 import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm'
 
 @Entity('Hotel')
-class Hotel{
+export class Hotel{
     @PrimaryGeneratedColumn()
     private id: number;
 
@@ -13,7 +13,4 @@ class Hotel{
 
     @Column()
     private comments: string;
-
-    @Column()
-    private profile: Uint8Array;
 }
