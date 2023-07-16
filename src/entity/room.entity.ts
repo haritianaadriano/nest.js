@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Hotel } from "./hotel.entity";
 
 @Entity('Room')
 export class Room {
@@ -10,4 +11,7 @@ export class Room {
 
     @Column()
     private status: boolean;
+
+    @ManyToOne(() => Hotel)
+    private hotel: Hotel;
 }

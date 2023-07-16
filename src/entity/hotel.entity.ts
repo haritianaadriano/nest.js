@@ -1,4 +1,6 @@
-import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm'
+import { Column, PrimaryGeneratedColumn, Entity, OneToOne, JoinColumn, ManyToOne } from 'typeorm'
+import { Profile } from './profile.entity';
+import { Location } from './location.entity';
 
 @Entity('Hotel')
 export class Hotel{
@@ -13,4 +15,12 @@ export class Hotel{
 
     @Column()
     private comments: string;
+
+    @OneToOne(() => Profile)
+    @JoinColumn()
+    private profile: Profile;
+
+    @ManyToOne(() => Location)
+    private location: Location;
+
 }

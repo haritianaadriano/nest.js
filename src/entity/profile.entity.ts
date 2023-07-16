@@ -1,5 +1,6 @@
 import { type } from "os";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Hotel } from "./hotel.entity";
 
 @Entity("Profile")
 export class Profile{
