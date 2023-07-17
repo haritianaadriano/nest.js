@@ -9,6 +9,8 @@ export class HotelService {
         @InjectRepository(Hotel) private readonly hotelRepository: Repository<Hotel>,
     ) {}
 
-    createHotel (createHotel: CreateHotel)
+    createHotel (createHotel: CreateHotel){
+        
+    }
 
 }

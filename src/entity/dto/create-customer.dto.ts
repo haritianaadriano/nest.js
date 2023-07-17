@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateCustomerDto {
     @IsString()
@@ -9,5 +9,6 @@ export class CreateCustomerDto {
     @IsNotEmpty()
     lastname: string;
 
+    @IsBoolean()
     adult: boolean;
 }
