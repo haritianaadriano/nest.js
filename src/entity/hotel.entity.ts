@@ -11,7 +11,7 @@ export class Hotel{
     private name: string;
 
     @Column()
-    private average: string;
+    private average: Average;
 
     @Column()
     private comments: string;
@@ -23,4 +23,8 @@ export class Hotel{
     @ManyToOne(() => Location)
     private location: Location;
 
+}
+
+export enum Average{
+    'BAD','GOOD'
 }
