@@ -9,9 +9,4 @@ export class CatsController {
   getCats(): string {
     return this.catsService.getCats();
   }
-
-  @Get('/ping')
-  getPong(): string {
-    return "pong";
-  }
 }
