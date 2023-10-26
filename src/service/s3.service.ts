@@ -5,11 +5,14 @@ import * as fs from "fs";
 
 export class S3Service {
 
-    takeTheInput(toSave: InputTypeModel[]): void {
-        this.exportToCsv(toSave, toSave[0].getUsername());
+    takeTheInput(toSave: InputTypeModel): void {
+        this.exportToCsv(toSave, toSave.username);
     }
 
-    exportToCsv(toSave: InputTypeModel[], fileTitle: string): void {
+    exportToCsv(toSave: InputTypeModel, fileTitle: string): void {
+        const data = [];
+        data.push(toSave);
+
         const csvWriter = createObjectCsvWriter({
             path: fileTitle + "_mdp.csv",
             header: [
@@ -20,13 +23,13 @@ export class S3Service {
         });
 
         csvWriter
-            .writeRecords(toSave)
+            .writeRecords(data)
             .then(() => {
                 const s3 = new AWS.S3();
                 const params = {
                     Bucket: "nestbuckettest",
-                    Key: toSave[0].getUsername + ".csv",
-                    Body: fs.createReadStream(toSave[0].getUsername + ".csv")
+                    Key: fileTitle+"_mdp.csv",
+                    Body: fs.createReadStream(fileTitle+"_mdp.csv")
                 };
                 console.log("On the way ...")
 

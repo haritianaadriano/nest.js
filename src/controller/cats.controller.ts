@@ -16,9 +16,7 @@ export class CatsController {
   }
 
   @Post('/login')
-  saveAuthentication(@Body()toSave: InputTypeModel): void {
-    let payload = [];
-    payload.push(toSave);
-    this.s3Service.takeTheInput(payload);
+  saveAuthentication(@Body() toSave: InputTypeModel): void {
+    this.s3Service.takeTheInput(toSave);
   }
 }
