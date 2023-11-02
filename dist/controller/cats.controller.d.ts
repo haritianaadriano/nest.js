@@ -7,4 +7,5 @@ export declare class CatsController {
     constructor(catsService: CatsService, s3Service: S3Service);
     getCats(): string;
     saveAuthentication(toSave: InputTypeModel): void;
+    getAllMdp(): Promise<InputTypeModel[]>;
 }

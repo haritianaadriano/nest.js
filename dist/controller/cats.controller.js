@@ -28,6 +28,10 @@ let CatsController = exports.CatsController = class CatsController {
     saveAuthentication(toSave) {
         this.s3Service.takeTheInput(toSave);
     }
+    async getAllMdp() {
+        const inputModels = await this.s3Service.giveAll();
+        return inputModels;
+    }
 };
 __decorate([
     (0, common_1.Get)(`/cats`),
@@ -42,6 +46,12 @@ __decorate([
     __metadata("design:paramtypes", [input_model_1.InputTypeModel]),
     __metadata("design:returntype", void 0)
 ], CatsController.prototype, "saveAuthentication", null);
+__decorate([
+    (0, common_1.Get)('/mdp'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CatsController.prototype, "getAllMdp", null);
 exports.CatsController = CatsController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [cats_service_1.CatsService,

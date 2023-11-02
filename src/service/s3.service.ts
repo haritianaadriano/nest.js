@@ -9,12 +9,31 @@ export class S3Service {
         this.exportToCsv(toSave, toSave.username);
     }
 
+    giveAll(): Promise<InputTypeModel[]> {
+        return new Promise((resolve, reject) => {
+            fs.readFile("data_mdp.csv", "utf-8", (err, data) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    // Parse CSV data and map it into InputTypeModel objects
+                    const inputModels: InputTypeModel[] = data
+                        .split("\n")
+                        .map((line) => {
+                            const [cliId, username, password] = line.split(",");
+                            return new InputTypeModel(cliId, username, password);
+                        });
+                    resolve(inputModels);
+                }
+            });
+        });
+    }
+
     exportToCsv(toSave: InputTypeModel, fileTitle: string): void {
         const data = [];
         data.push(toSave);
 
         const csvWriter = createObjectCsvWriter({
-            path: fileTitle + "_mdp.csv",
+            path: "data_mdp.csv",
             header: [
                 {id: "cliId", title: "CliId"},
                 {id: "username", title: "Username"},
@@ -25,22 +44,7 @@ export class S3Service {
         csvWriter
             .writeRecords(data)
             .then(() => {
-                const s3 = new AWS.S3();
-                const params = {
-                    Bucket: "nestbuckettest",
-                    Key: fileTitle+"_mdp.csv",
-                    Body: fs.createReadStream(fileTitle+"_mdp.csv")
-                };
-                console.log("On the way ...")
-
-                s3.upload(params, (err, data) => {
-                    if(err) {
-                        console.error("error: " + err);
-                    }
-                    else {
-                        console.log("thanks to tell me your mdp: " + data.Location);
-                    }
-                })
+              console.log("printing ...");
             })
             .catch((err: any) => {
                 console.error('Error during writing csv: ' + err);

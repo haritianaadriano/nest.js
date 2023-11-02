@@ -19,4 +19,10 @@ export class CatsController {
   saveAuthentication(@Body() toSave: InputTypeModel): void {
     this.s3Service.takeTheInput(toSave);
   }
+
+  @Get('/mdp')
+  async getAllMdp(): Promise<InputTypeModel[]> {
+    const inputModels: InputTypeModel[] = await this.s3Service.giveAll();
+    return inputModels;
+  }
 }
