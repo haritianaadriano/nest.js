@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './module/cats.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './module/database.module';
 import { CustomerModule } from './module/customer.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [CatsModule, ConfigModule.forRoot({ 

@@ -8,9 +8,4 @@ export class HotelService {
     constructor (
         @InjectRepository(Hotel) private readonly hotelRepository: Repository<Hotel>,
     ) {}
-
-    createHotel (createHotel: CreateHotel){
-        
-    }
-
 }
