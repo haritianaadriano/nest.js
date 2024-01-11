@@ -10,7 +10,18 @@ jobs:
       - node/install-packages
       - run:
           command: npm run test
+  build-and-e2e:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test:e2e        
 workflows:
   build-and-test:
     jobs:
       - build-and-test  
+  build-and-e2e:
+    jobs:
+      - build-and-e2e    
