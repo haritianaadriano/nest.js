@@ -21,4 +21,5 @@ workflows:
     jobs:
       - build-and-test  
   build-and-e2e:
+    jobs:
       - build-and-e2e    
